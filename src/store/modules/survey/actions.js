@@ -6,5 +6,8 @@ export default {
     const body = {}
     const config = { headers: { } }
     return axios.post(`${API_URL}/users`, body, config)
+  },
+  setName ({ commit }, name) {
+    commit('SET_NAME', name)
   }
 }
