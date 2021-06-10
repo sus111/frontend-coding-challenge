@@ -13,13 +13,17 @@
       selected: {
         type: Boolean,
         default: false
+      },
+      customEvent: {
+        type: String,
+        required: true
       }
     }
   }
 </script>
 
-<template>  
-  <div class="check-button" :class="{ 'check-button--selected': selected }" tabindex="0">
+<template>
+  <div class="check-button" @click="$emit(customEvent, value)" :class="{ 'check-button--selected': selected }" tabindex="0">
     <p class="check-button__text body--large">{{ text }}</p>
   </div>
 </template>
@@ -37,7 +41,7 @@
     font-weight: 400;
     transition: .2s;
     padding: 0 10px;
-    border-radius: .25rem;        
+    border-radius: .25rem;
   }
 
   @media (min-width: 768px) {

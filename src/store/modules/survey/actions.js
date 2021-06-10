@@ -9,5 +9,11 @@ export default {
   },
   setName ({ commit }, name) {
     commit('SET_NAME', name)
+  },
+  setGoals ({ commit }, goals) {
+    commit('SET_GOALS', goals)
+  },
+  setDiet ({ commit }, diet) {
+    commit('SET_DIET', diet)
   }
 }

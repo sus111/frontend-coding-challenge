@@ -38,8 +38,7 @@ const router = new Router({
           meta: {
             layout: MinimalLayout,
             authenticated: false
-          },
-          props: true
+          }
         },
         {
           name: 'diet',
