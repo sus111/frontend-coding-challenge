@@ -12,3 +12,6 @@ I'm passing a 'customEvent' property down the the CheckButton file in order to m
 Yay, I'm building an app in Vue! :D
 
 I'm not sure I'm using the vuex store correctly as there is a state.js file I haven't used yet.
+
+Task 3:
+I'm storing dob in the vuex store. However, in order to set this.dob for the disableNext function to work - I don't know how to properly 'catch' the emitted dob value from the Button component. I'm using @input on the input element doesn't seem correct? This works, but seems like there might be a better Vue way to handle this.

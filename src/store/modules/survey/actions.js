@@ -15,5 +15,8 @@ export default {
   },
   setDiet ({ commit }, diet) {
     commit('SET_DIET', diet)
+  },
+  setDob ({ commit }, dob) {
+    commit('SET_DOB', dob)
   }
 }

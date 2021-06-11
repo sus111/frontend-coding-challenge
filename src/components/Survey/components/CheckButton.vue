@@ -14,6 +14,10 @@
         type: Boolean,
         default: false
       },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       customEvent: {
         type: String,
         required: true
@@ -23,7 +27,7 @@
 </script>
 
 <template>
-  <div class="check-button" @click="$emit(customEvent, value)" :class="{ 'check-button--selected': selected }" tabindex="0">
+  <div class="check-button" @click="$emit(customEvent, value)" :class="[ {'check-button--selected': selected}, {'check-button--disabled': disabled} ]" tabindex="0">
     <p class="check-button__text body--large">{{ text }}</p>
   </div>
 </template>
@@ -69,13 +73,15 @@
 
   .check-button--disabled {
     border: 1px solid #e5e7f1;
-    background: #fff;
     box-shadow: none;
     color: #ced0d9;
+    cursor: auto;
   }
 
   .check-button--disabled:hover {
-    outline: none
+    outline: none;
+    box-shadow: none;
+    transform: none;
   }
 
   .check-button__text {

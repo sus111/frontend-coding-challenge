@@ -18,6 +18,15 @@
           return 'You must be over 18'
         }
         return this.errors.items.length > 0 ? this.errors.items[0].msg : ''
+      },
+      dob: {
+        get () {
+          return this.$store.state.survey.dob
+
+        },
+        set (dob) {
+          this.$store.dispatch('survey/setDob', dob)
+        }
       }
     },
     methods: {
@@ -32,12 +41,15 @@
       },
       back () {
         this.$router.push('/diet')
+      },
+      setDob (dob) {
+        this.dob = dob
       }
     }
   }
 </script>
 
-<template>  
+<template>
   <div class="grid-x grid-x-margin">
     <div class="cell small-12 medium-6 medium-offset-3">
       <div class="survey-questions__dob align-center">
@@ -45,7 +57,7 @@
         <div class="spacer sp__top--sm"></div>
         <p class="body--large question-description">This helps us recommend the best test for you. We know it's a bit forward but our lips are sealed!</p>
         <div class="spacer sp__top--sm"></div>
-        <dob-input class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
+        <dob-input @input="setDob" class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">
@@ -53,7 +65,7 @@
             </div>
           </div>
           <div class="cell auto align-right">
-            <thv-button element="button" size="large" @click="submit">Next</thv-button>
+            <thv-button element="button" size="large" :disabled="disableNext" @click="submit">Next</thv-button>
           </div>
         </div>
       </div>

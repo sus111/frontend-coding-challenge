@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<template>  
+<template>
     <span>
       <a class="button" v-if="element==='a'" :class="['button--' + size, colourModifierClass, type]" :href="link">
         <slot name="icon"></slot>
