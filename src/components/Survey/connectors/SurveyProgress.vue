@@ -16,7 +16,7 @@
       return {
         stages: ['name', 'goals', 'diet', 'dob']
       }
-    },
+    }
   }
 </script>
 

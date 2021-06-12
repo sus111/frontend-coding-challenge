@@ -24,7 +24,6 @@
       dob: {
         get () {
           return this.$store.state.survey.user.dob
-
         },
         set (dob) {
           this.$store.dispatch('survey/setDob', dob)
@@ -33,14 +32,13 @@
       error: {
         get () {
           return this.$store.state.survey.error
-
         },
         set () {
           this.$store.dispatch('survey/resetError')
         }
       },
       ...mapState({
-        user: state => state.survey.user,
+        user: state => state.survey.user
       })
     },
     methods: {
@@ -72,7 +70,7 @@
         this.dob = dob
       }
     },
-    mounted() {
+    mounted () {
       this.$store.dispatch('survey/setCurrentStep', 3)
     }
   }
