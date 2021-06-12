@@ -48,6 +48,9 @@
     methods: {
       handleSubmit () {
         this.$validator.validateAll()
+      },
+      onFocus () {
+        this.$emit('focus')
       }
     },
     computed: {
@@ -78,13 +81,13 @@
   }
 </script>
 
-<template>  
+<template>
   <div class="input input__dob" :class="{ 'error': ageError }">
     <p class="body--small input__description" v-if="description" :class="{ 'error': ageError }">{{ description }}</p>
     <div class="input__group">
-      <text-input class="input__dob__day" name="day" type="number" v-model="day" placeholder="DD" :error="errors.has('day')" v-validate="'required|min_value:1|max_value:31'" maxlength="2"></text-input>
-      <text-input class="input__dob__month" name="month" type="number" v-model="month" placeholder="MM" :error="errors.has('month')" v-validate="'required|min_value:1|max_value:12'" maxlength="2"></text-input>
-      <text-input class="input__dob__year" name="year" type="number" v-model="year" placeholder="YYYY" v-validate="'required|min_value:1900|max_value:2020'" :error="errors.has('year')" maxlength="4"></text-input>
+      <text-input class="input__dob__day" name="day" type="number" v-model="day" placeholder="DD" :error="errors.has('day')" v-validate="'required|min_value:1|max_value:31'" maxlength="2" @focus="onFocus"></text-input>
+      <text-input class="input__dob__month" name="month" type="number" v-model="month" placeholder="MM" :error="errors.has('month')" v-validate="'required|min_value:1|max_value:12'" maxlength="2" @focus="onFocus"></text-input>
+      <text-input class="input__dob__year" name="year" type="number" v-model="year" placeholder="YYYY" v-validate="'required|min_value:1900|max_value:2020'" :error="errors.has('year')" maxlength="4" @focus="onFocus"></text-input>
     </div>
     <p class="body--small input__feedback" v-if="feedback"><span>{{ feedback }}</span></p>
   </div>

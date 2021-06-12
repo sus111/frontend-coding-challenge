@@ -16,3 +16,8 @@ I'm storing dob in the vuex store. However, in order to set this.dob for the dis
 
 Task 4:
 I'm setting the currentStep from the mounted lifecycle hook of each onboarding page. I wondered about passing the name of the component rather than hard-coding a number. The stages of the onboarding form could be a list available across the app, and also used when navigating to the next screen or back to the previous one (eg. this.$router.push('/diet')), which would make rearranging page order / removing pages easier.
+
+Task 5:
+I removed axios from the project, as we can use fetch. I'm catching the result of the async call inside postSurveyRequest in the Dob component & pushing to the success screen from there. In React, I'd handle routing and subsequent action calls from within an action, rather than a component, so I'm not the best place to handle this.
+I am rendering the error message that's returned from the server in case of request error, not sure if it's necessary. The error is cleared when the user focuses on any of the dob inputs.
+I removed the getters as I didn't find any use for them, however, I might be missing something!

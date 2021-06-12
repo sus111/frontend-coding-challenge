@@ -11,7 +11,7 @@
     computed: {
       selectedDiet: {
         get () {
-          return this.$store.state.survey.diet
+          return this.$store.state.survey.user.diet
         },
         set (diet) {
           this.$store.dispatch('survey/setDiet', diet)

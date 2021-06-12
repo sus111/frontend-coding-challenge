@@ -11,7 +11,7 @@
     computed: {
       name: {
         get () {
-          return this.$store.state.survey.name
+          return this.$store.state.survey.user.name
         },
         set (newName) {
           this.$store.dispatch('survey/setName', newName)

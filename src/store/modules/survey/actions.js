@@ -1,12 +1,4 @@
-import axios from 'axios'
-const API_URL = 'http://localhost:3000'
-
 export default {
-  async sendToApi (context, data) {
-    const body = {}
-    const config = { headers: { } }
-    return axios.post(`${API_URL}/users`, body, config)
-  },
   setName ({ commit }, name) {
     commit('SET_NAME', name)
   },
@@ -21,5 +13,37 @@ export default {
   },
   setCurrentStep ({ commit }, step) {
     commit('SET_CURRENT_STEP', step)
+  },
+  async postSurveyRequest ({ commit }, user) {
+    commit('POST_SURVEY_REQUEST')
+    const response = await fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          ...user
+        }
+      })
+    })
+
+    // throw error manually in order to pass detailed error message
+    if (!response.ok) {
+      const data = await response.json()
+      throw new Error(data.error)
+    }
+
+    return true
+  },
+  postSurveyFailure ({ commit }, error) {
+    commit('POST_SURVEY_FAILURE', error)
+  },
+  postSurveySuccess ({ commit }) {
+    commit('POST_SURVEY_SUCCESS')
+  },
+  resetError ({ commit }) {
+    commit('RESET_ERROR')
   }
 }

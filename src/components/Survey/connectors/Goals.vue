@@ -1,5 +1,6 @@
 <script>
   import { mapState } from 'vuex'
+
   import CheckButton from '@/components/Survey/components/CheckButton'
   import ThvButton from '@/components/Shared/Button'
 
@@ -12,14 +13,14 @@
     computed: {
       selectedGoals: {
         get () {
-          return this.$store.state.survey.goals
+          return this.$store.state.survey.user.goals
         },
         set (goal) {
           this.$store.dispatch('survey/setGoals', goal)
         }
       },
       ...mapState({
-        name: state => state.survey.name
+        name: state => state.survey.user.name
       })
     },
     data () {

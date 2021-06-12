@@ -1,9 +1,12 @@
 const state = () => ({
-  name: '',
-  goals: [],
-  diet: '',
-  dob: '',
-  currentStep: 0
+  user: {
+    name: '',
+    goals: [],
+    diet: '',
+    dob: ''
+  },
+  currentStep: 0,
+  error: ''
 })
 
 export default state

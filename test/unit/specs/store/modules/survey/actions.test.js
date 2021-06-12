@@ -1,7 +1,6 @@
 import actions from '@/store/modules/survey/actions'
-import axios from 'axios'
 
-jest.mock('axios')
+jest.mock('fetch')
 
 describe('actions', () => {
   describe('sendToApi', () => {

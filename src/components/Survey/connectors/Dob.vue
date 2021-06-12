@@ -1,4 +1,6 @@
 <script>
+  import { mapState } from 'vuex'
+
   import ThvButton from '@/components/Shared/Button'
   import DobInput from '@/components/Shared/DobInput'
 
@@ -21,21 +23,45 @@
       },
       dob: {
         get () {
-          return this.$store.state.survey.dob
+          return this.$store.state.survey.user.dob
 
         },
         set (dob) {
           this.$store.dispatch('survey/setDob', dob)
         }
-      }
+      },
+      error: {
+        get () {
+          return this.$store.state.survey.error
+
+        },
+        set () {
+          this.$store.dispatch('survey/resetError')
+        }
+      },
+      ...mapState({
+        user: state => state.survey.user,
+      })
     },
     methods: {
+      onFocus () {
+        if (this.error) {
+          this.error = ''
+        }
+      },
       submit () {
         this.$refs.DobInput.handleSubmit()
         this.$validator.reset()
         this.$validator.validate().then(result => {
           if (result && !this.feedback) {
-            this.$router.push('/success')
+            this.$store.dispatch('survey/postSurveyRequest', this.user)
+              .then(() => {
+                this.$store.dispatch('survey/postSurveySuccess')
+                this.$router.push('/success')
+              })
+              .catch(error => {
+                this.$store.dispatch('survey/postSurveyFailure', error.message)
+              })
           }
         })
       },
@@ -60,7 +86,7 @@
         <div class="spacer sp__top--sm"></div>
         <p class="body--large question-description">This helps us recommend the best test for you. We know it's a bit forward but our lips are sealed!</p>
         <div class="spacer sp__top--sm"></div>
-        <dob-input @input="setDob" class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
+        <dob-input @input="setDob" @focus="onFocus" class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">
@@ -72,6 +98,7 @@
           </div>
         </div>
       </div>
+      <p v-if="error" class="submit-error cell auto">Oops! {{error}}</p>
     </div>
   </div>
 </template>
@@ -84,6 +111,11 @@
   }
   .survey-questions__dob .input__feedback {
     text-align: left;
+  }
+  .submit-error {
+    text-align: center;
+    margin-top: 32px;
+    color: #fa476f;
   }
 
 </style>
