@@ -14,7 +14,7 @@
           return this.$store.state.survey.user.name
         },
         set (newName) {
-          this.$store.dispatch('survey/setName', newName)
+          this.$store.dispatch('survey/setUserName', newName)
         }
       }
     },

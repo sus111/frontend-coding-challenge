@@ -16,7 +16,7 @@
           return this.$store.state.survey.user.goals
         },
         set (goal) {
-          this.$store.dispatch('survey/setGoals', goal)
+          this.$store.dispatch('survey/setUserGoals', goal)
         }
       },
       ...mapState({

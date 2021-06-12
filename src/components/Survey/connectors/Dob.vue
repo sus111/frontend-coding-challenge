@@ -26,7 +26,7 @@
           return this.$store.state.survey.user.dob
         },
         set (dob) {
-          this.$store.dispatch('survey/setDob', dob)
+          this.$store.dispatch('survey/setUserDob', dob)
         }
       },
       error: {
@@ -44,7 +44,7 @@
     methods: {
       onFocus () {
         if (this.error) {
-          this.error = ''
+          this.resetError()
         }
       },
       submit () {
@@ -54,7 +54,6 @@
           if (result && !this.feedback) {
             this.$store.dispatch('survey/postSurveyRequest', this.user)
               .then(() => {
-                this.$store.dispatch('survey/postSurveySuccess')
                 this.$router.push('/success')
               })
               .catch(error => {
@@ -66,12 +65,16 @@
       back () {
         this.$router.push('/diet')
       },
-      setDob (dob) {
+      setUserDob (dob) {
         this.dob = dob
+      },
+      resetError () {
+        this.error = ''
       }
     },
     mounted () {
       this.$store.dispatch('survey/setCurrentStep', 3)
+      this.resetError()
     }
   }
 </script>
@@ -84,7 +87,7 @@
         <div class="spacer sp__top--sm"></div>
         <p class="body--large question-description">This helps us recommend the best test for you. We know it's a bit forward but our lips are sealed!</p>
         <div class="spacer sp__top--sm"></div>
-        <dob-input @input="setDob" @focus="onFocus" class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
+        <dob-input @input="setUserDob" @focus="onFocus" class="align-center survey-input" ref="DobInput" v-validate="'required'" data-vv-value-path="dob" :value="dob" name="dob" :error="errors.has('dob')" minAge="18" :feedback="feedback" @keyup.enter="submit" label=""></dob-input>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">

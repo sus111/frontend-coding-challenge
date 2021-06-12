@@ -14,7 +14,7 @@
           return this.$store.state.survey.user.diet
         },
         set (diet) {
-          this.$store.dispatch('survey/setDiet', diet)
+          this.$store.dispatch('survey/setUserDiet', diet)
         }
       }
     },

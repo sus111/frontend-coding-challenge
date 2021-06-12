@@ -1,15 +1,15 @@
 export default {
-  setName ({ commit }, name) {
-    commit('SET_NAME', name)
+  setUserName ({ commit }, name) {
+    commit('SET_USER_NAME', name)
   },
-  setGoals ({ commit }, goals) {
-    commit('SET_GOALS', goals)
+  setUserGoals ({ commit }, goals) {
+    commit('SET_USER_GOALS', goals)
   },
-  setDiet ({ commit }, diet) {
-    commit('SET_DIET', diet)
+  setUserDiet ({ commit }, diet) {
+    commit('SET_USER_DIET', diet)
   },
-  setDob ({ commit }, dob) {
-    commit('SET_DOB', dob)
+  setUserDob ({ commit }, dob) {
+    commit('SET_USER_DOB', dob)
   },
   setCurrentStep ({ commit }, step) {
     commit('SET_CURRENT_STEP', step)
@@ -29,7 +29,7 @@ export default {
       })
     })
 
-    // throw error manually in order to pass detailed error message
+    // Throw error manually in order to pass detailed error message
     if (!response.ok) {
       const data = await response.json()
       throw new Error(data.error)
@@ -39,9 +39,6 @@ export default {
   },
   postSurveyFailure ({ commit }, error) {
     commit('POST_SURVEY_FAILURE', error)
-  },
-  postSurveySuccess ({ commit }) {
-    commit('POST_SURVEY_SUCCESS')
   },
   resetError ({ commit }) {
     commit('RESET_ERROR')
