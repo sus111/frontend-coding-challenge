@@ -20,8 +20,11 @@
     },
     methods: {
       submit () {
-        this.$router.push({ name: 'goals', params: { name: this.name } })
-      }
+        this.$router.push('/goals')
+      },
+    },
+    mounted() {
+      this.$store.dispatch('survey/setCurrentStep', 0)
     }
   }
 </script>

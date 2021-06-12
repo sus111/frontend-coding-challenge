@@ -74,6 +74,9 @@
       back () {
         this.$router.push('/name')
       }
+    },
+    mounted() {
+      this.$store.dispatch('survey/setCurrentStep', 1)
     }
   }
 </script>

@@ -62,6 +62,9 @@
       back () {
         this.$router.push('/goals')
       }
+    },
+    mounted() {
+      this.$store.dispatch('survey/setCurrentStep', 2)
     }
   }
 </script>

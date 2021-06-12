@@ -10,5 +10,8 @@ export default {
   },
   SET_GOALS (state, goals) {
     state.goals = goals
+  },
+  SET_CURRENT_STEP (state, step) {
+    state.currentStep = step
   }
 }

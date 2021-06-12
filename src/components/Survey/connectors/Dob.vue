@@ -45,6 +45,9 @@
       setDob (dob) {
         this.dob = dob
       }
+    },
+    mounted() {
+      this.$store.dispatch('survey/setCurrentStep', 3)
     }
   }
 </script>

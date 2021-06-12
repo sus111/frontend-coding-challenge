@@ -18,5 +18,8 @@ export default {
   },
   setDob ({ commit }, dob) {
     commit('SET_DOB', dob)
+  },
+  setCurrentStep ({ commit }, step) {
+    commit('SET_CURRENT_STEP', step)
   }
 }

@@ -10,15 +10,20 @@
     computed: {
       logoSrc () {
         return Logomark
+      },
+      currentStep: {
+        get () {
+          return this.$store.state.survey.currentStep
+        }
       }
     }
   }
 </script>
 
-<template>  
+<template>
   <header class="header">
     <div class="header__container"><a class="header__logo header__logo--logomark" href="/"><img :src="logoSrc"/></a>
-      <survey-progress></survey-progress>
+      <survey-progress :currentStep="currentStep"></survey-progress>
     </div>
   </header>
 </template>
