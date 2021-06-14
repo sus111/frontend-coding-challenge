@@ -33,7 +33,6 @@
           improveFitness: {
             name: 'Fitness',
             value: 'fitness'
-
           },
           improveLongTermHealth: {
             name: 'Long-term health',

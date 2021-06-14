@@ -41,5 +41,8 @@ export default {
   },
   resetError ({ commit }) {
     commit('RESET_ERROR')
+  },
+  resetUserData ({ commit }) {
+    commit('RESET_USER_DATA')
   }
 }

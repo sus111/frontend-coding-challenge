@@ -30,3 +30,14 @@ I tried to use as many existing classes as possible, but I had to add a few clas
 
 I used the Vue Test Utils library to mount the CheckButton Component and make assertions on the component.
 In order to test the API request (postSurveyRequest) I needed to mock the global fetch object in order to return the needed responses.
+
+## Overall
+
+I enjoyed learning and using Vue for this code test. I'm not sure I'm using all of the correct conventions, but I think I've covered the neeeded functionality.
+
+I found using Vue pretty similar to React - an app made up of components and components with lifecylce hooks, methods & data, with a global FE data store.
+Differences I found:
+
+- I like that actions and state are accessible from global store object across all components. The idea of 'connected' & 'dumb' components in React is more opionated & apps are structured with connected container parent & children elements, not sure whether this is the same pattern used in Vue?
+- I prefer using jsx in React - being able to use JavaScript inline & using html-like syntax, rather than using <template></template> with Vue specific syntax (@click, v-bind etc)
+- I probably don't know Vue well enough, but React has some features - eg. hooks, useState which help make components more succint that are missing in Vue.

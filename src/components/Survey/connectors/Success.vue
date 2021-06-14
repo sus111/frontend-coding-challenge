@@ -16,15 +16,16 @@
     methods: {
       startOver () {
         this.$router.push('/')
+        this.$store.dispatch('survey/resetUserData')
       },
-      goalWithComma (index) {
+      returnGoalWithComma (index) {
         const nonBreakingSpace = `\u00a0`
 
         return index !== this.user.goals.length - 1
           ? `${this.user.goals[index]},${nonBreakingSpace}`
           : this.user.goals[index]
       },
-      returnDob () {
+      returnDobString () {
         const userDob = new Date(this.user.dob)
         var parts = userDob.toISOString().substring(0, 10).split('-')
         var day = parts[2]
@@ -57,7 +58,7 @@
           <h5>Goals</h5>
           <div class="field-value">
             <span v-for="(goal, index) in this.user.goals" :key="index">
-              {{ goalWithComma(index) }}
+              {{ returnGoalWithComma(index) }}
             </span>
           </div>
           <div class="spacer sp__top--xs"></div>
@@ -65,7 +66,7 @@
           <p class="field-value">{{ user.diet }}</p>
           <div class="spacer sp__top--xs"></div>
           <h5>DOB</h5>
-          <p class="field-value">{{ returnDob() }}</p>
+          <p class="field-value">{{ returnDobString() }}</p>
           <div class="spacer sp__top--sm"></div>
           <thv-button element="button" size="large" @click="startOver">Start over</thv-button>
         </div>

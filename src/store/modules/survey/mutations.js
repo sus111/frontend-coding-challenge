@@ -22,5 +22,13 @@ export default {
   },
   RESET_ERROR (state) {
     state.error = ''
+  },
+  RESET_USER_DATA (state) {
+    state.user = {
+      name: '',
+      goals: [],
+      diet: '',
+      dob: ''
+    }
   }
 }
