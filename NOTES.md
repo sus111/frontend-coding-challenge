@@ -25,3 +25,8 @@ I removed the getters as I didn't find any use for them, however, I might be mis
 ## Part 2: Adding a Success screen
 
 I tried to use as many existing classes as possible, but I had to add a few class names for text as it's difficult to find the right styles from the minified css in the html file!
+
+## Part 3: Adding Tests
+
+I used the Vue Test Utils library to mount the CheckButton Component and make assertions on the component.
+In order to test the API request (postSurveyRequest) I needed to mock the global fetch object in order to return the needed responses.

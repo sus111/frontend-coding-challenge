@@ -29,7 +29,6 @@ export default {
       })
     })
 
-    // Throw error manually in order to pass detailed error message
     if (!response.ok) {
       const data = await response.json()
       throw new Error(data.error)
